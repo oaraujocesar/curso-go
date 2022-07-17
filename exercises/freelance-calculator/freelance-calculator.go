@@ -9,6 +9,18 @@ import (
 	n "golang.org/x/text/number"
 )
 
+func formatToCurrency(value float64) (n.Formatter, c.Unit, *m.Printer) {
+	lang := l.MustParse("en_US")
+	cur, _ := c.FromTag(lang)
+
+	scale, _ := c.Cash.Rounding(cur)
+	dec := n.Decimal(value, n.Scale(scale))
+
+	p := m.NewPrinter(lang)
+
+	return dec, cur, p
+}
+
 func main() {
 	var monthlyPay float64
 	var dailyHours int64
@@ -21,12 +33,7 @@ func main() {
 
 	valuePerHour := monthlyPay / float64(dailyHours*22)
 
-	lang := l.MustParse("en_US")
-	cur, _ := c.FromTag(lang)
+	dec, cur, printer := formatToCurrency(valuePerHour)
 
-	scale, _ := c.Cash.Rounding(cur)
-	dec := n.Decimal(valuePerHour, n.Scale(scale))
-
-	p := m.NewPrinter(lang)
-	p.Printf("You gonna earn: %v%v per hour", c.Symbol(cur), dec)
+	printer.Printf("You gonna earn: %v%v per hour", c.Symbol(cur), dec)
 }
