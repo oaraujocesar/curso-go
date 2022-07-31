@@ -10,7 +10,20 @@ func approveOrNot(grade float64) {
 	}
 }
 
+func approveOrNotWithConcept(grade float64) string {
+	if grade >= 9 && grade <= 10 {
+		return "A"
+	} else if grade >= 7 && grade < 9 {
+		return "B"
+	} else {
+		return "C"
+	}
+}
+
 func main() {
 	approveOrNot(6)
 	approveOrNot(7.3)
+
+	result := approveOrNotWithConcept(7)
+	fmt.Println(result)
 }
