@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func approveOrNot(grade float64) {
 	if grade >= 7 {
@@ -20,10 +24,23 @@ func approveOrNotWithConcept(grade float64) string {
 	}
 }
 
+func randomNum() int {
+	s := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(s)
+
+	return r.Intn(10)
+}
+
 func main() {
 	approveOrNot(6)
 	approveOrNot(7.3)
 
 	result := approveOrNotWithConcept(7)
 	fmt.Println(result)
+
+	if i := randomNum(); i > 5 {
+		fmt.Println("You won")
+	} else {
+		fmt.Println("You lost")
+	}
 }
