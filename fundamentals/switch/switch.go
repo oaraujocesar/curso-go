@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func gradeToConcept(g float64) string {
 	var grade = int(g)
@@ -23,6 +26,21 @@ func gradeToConcept(g float64) string {
 	}
 }
 
+func whichType(i interface{}) string {
+	switch i.(type) {
+	case int:
+		return "integer"
+	case float32, float64:
+		return "float"
+	case string:
+		return "string"
+	case func():
+		return "function"
+	default:
+		return "unknown"
+	}
+}
+
 func main() {
 	concept := gradeToConcept(10)
 	fmt.Println(concept)
@@ -39,4 +57,17 @@ func main() {
 	concept4 := gradeToConcept(123)
 	fmt.Println(concept4)
 	fmt.Println("==========================")
+
+	t := time.Now()
+
+	switch { // same as switch true {}
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 18:
+		fmt.Println("Good afternoon!")
+	default:
+		fmt.Println("Good evening!")
+	}
+
+	fmt.Println(whichType(2.3))
 }
