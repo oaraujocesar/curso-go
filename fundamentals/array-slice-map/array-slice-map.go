@@ -54,4 +54,13 @@ func main() {
 
 	s = append(s, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1)
 	fmt.Println(s, len(s), cap(s))
+
+	arr := make([]int, 10, 20)
+	arr2 := append(arr, 1, 2, 3)
+
+	fmt.Println(arr, arr2)
+
+	arr2[3] = 12
+	fmt.Println(arr, arr2)
+
 }
