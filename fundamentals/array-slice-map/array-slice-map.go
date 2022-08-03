@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	// ARRAYS
@@ -28,6 +31,8 @@ func main() {
 		fmt.Printf("%d) %d\n", i, number)
 	}
 
+	fmt.Println(strings.Repeat("=", 30))
+
 	// SLICES
 	s1 := []int{1, 2, 3, 4, 5, 6, 7}
 
@@ -40,6 +45,8 @@ func main() {
 	s2 := a2[1:3]
 
 	fmt.Println(s2)
+
+	fmt.Println(strings.Repeat("=", 30))
 
 	// MAKE
 
@@ -63,6 +70,8 @@ func main() {
 	arr2[3] = 12
 	fmt.Println(arr, arr2)
 
+	fmt.Println(strings.Repeat("=", 30))
+
 	// COPY
 
 	array1 := [3]int{1, 2, 3}
@@ -78,4 +87,24 @@ func main() {
 	copy(slice2, slice1)
 	fmt.Println(slice2)
 
+	fmt.Println(strings.Repeat("=", 30))
+
+	// MAP
+	// var approved map[int]string
+	// maps should be initialized
+
+	approved := make(map[int]string)
+
+	approved[12333214565] = "Maria"
+	approved[12363474573] = "Pedro"
+	approved[34959923451] = "Anna"
+
+	fmt.Println(approved)
+	fmt.Println(approved[12333214565]) // read
+	delete(approved, 12333214565)
+	fmt.Println(approved)
+
+	for cpf, name := range approved {
+		fmt.Printf("%s (CPF: %d)\n", name, cpf)
+	}
 }
