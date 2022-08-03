@@ -107,4 +107,18 @@ func main() {
 	for cpf, name := range approved {
 		fmt.Printf("%s (CPF: %d)\n", name, cpf)
 	}
+
+	salaries := map[string]float64{
+		"César O. Araújo": 32250.30,
+		"Chava The Golem": 35930.11,
+		"The Djim":        6753.56,
+	}
+
+	salaries["Rafael Filho"] = 1350.0
+
+	delete(salaries, "nonexistent")
+
+	for name, salary := range salaries {
+		fmt.Println(name, salary)
+	}
 }
