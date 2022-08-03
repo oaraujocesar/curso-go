@@ -121,4 +121,22 @@ func main() {
 	for name, salary := range salaries {
 		fmt.Println(name, salary)
 	}
+
+	nested := map[string]map[string]float64{
+		"C": {
+			"César": 7000.0,
+			"Clara": 8520.33,
+		},
+		"D": {
+			"Daniel": 12344.10,
+		},
+	}
+
+	delete(nested, "D")
+
+	fmt.Println(strings.Repeat("=", 30))
+
+	for letter, employees := range nested {
+		fmt.Println(letter, employees)
+	}
 }
