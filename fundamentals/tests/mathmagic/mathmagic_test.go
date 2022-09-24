@@ -5,6 +5,7 @@ import "testing"
 const defaultError = "Expected value %v, got %v"
 
 func TestAverage(t *testing.T) {
+	t.Parallel()
 	expected := 7.28
 	value := Average(7.2, 9.9, 5.5, 6.5)
 
